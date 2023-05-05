@@ -53,8 +53,10 @@ class MyMainWindow(QMainWindow, Ui_RbafWin):
             result = calc_util.calc_count(cur_average_rate_of_return, cur_average_loss_rate, cur_average_accuracy,
                                           cur_target_rate_of_return, cur_position_ratio)
             if result == 0 or result < 0:
-                QMessageBox.information(self, "提示", "~~当前输入无法计算,可能是平均收益率低于平均亏损率或平均交易成功率过低导致~~")
+                self.tableWidgetOutput.setVisible(False)
+                QMessageBox.information(self, "提示", "~~无法计算,可能是平均收益率低于平均亏损率或平均交易成功率过低导致~~")
             else:
+                # self.tableWidgetOutput.setVisible(False)
                 success_count = result * cur_average_accuracy
                 fail_count = result * (1 - cur_average_accuracy)
                 target_return = cur_input * cur_target_rate_of_return
@@ -74,7 +76,7 @@ class MyMainWindow(QMainWindow, Ui_RbafWin):
                 self.result.append([round(roi_per_transaction, 2)])
                 self.result.append([round(net_amount_per_transaction, 2)])
                 self.result.append([round(target_return, 2)])
-                self.result.append([round(result, 2)])
+                self.result.append([round(float(result), 2)])
                 self.show_result()
                 self.result.clear()  # reset result for re-computing
 
