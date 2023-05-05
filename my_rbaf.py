@@ -50,10 +50,9 @@ class MyMainWindow(QMainWindow, Ui_RbafWin):
             cur_average_loss_rate = float(cur_average_loss_rate)/100
             cur_target_rate_of_return = float(cur_target_rate_of_return)/100
             cur_position_ratio = float(cur_position_ratio)/100
-            print(cur_input, cur_average_accuracy, cur_average_rate_of_return, cur_average_loss_rate, cur_target_rate_of_return, cur_position_ratio)
             result = calc_util.calc_count(cur_average_rate_of_return, cur_average_loss_rate, cur_average_accuracy,
                                           cur_target_rate_of_return, cur_position_ratio)
-            if result == 0:
+            if result == 0 or result < 0:
                 QMessageBox.information(self, "提示", "~~当前输入无法计算,可能是平均收益率低于平均亏损率或平均交易成功率过低导致~~")
             else:
                 success_count = result * cur_average_accuracy
@@ -80,7 +79,7 @@ class MyMainWindow(QMainWindow, Ui_RbafWin):
                 self.result.clear()  # reset result for re-computing
 
         else:
-            QMessageBox.information(self, "提示", "输入的数据不完整~~")
+            QMessageBox.information(self, "提示", "~~输入的数据不完整~~")
 
     def show_result(self):
         self.tableWidgetOutput.setVisible(True)
