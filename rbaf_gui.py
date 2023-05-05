@@ -94,13 +94,6 @@ class Ui_RbafWin(object):
         self.tableWidgetOutput.setHorizontalHeaderItem(0, item)
         self.tableWidgetOutput.horizontalHeader().setCascadingSectionResizes(True)
         RbafWin.setCentralWidget(self.centralwidget)
-        # self.menubar = QtWidgets.QMenuBar(RbafWin)
-        # self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 23))
-        # self.menubar.setObjectName("menubar")
-        # RbafWin.setMenuBar(self.menubar)
-        # self.statusbar = QtWidgets.QStatusBar(RbafWin)
-        # self.statusbar.setObjectName("statusbar")
-        # RbafWin.setStatusBar(self.statusbar)
 
         self.retranslateUi(RbafWin)
         QtCore.QMetaObject.connectSlotsByName(RbafWin)
