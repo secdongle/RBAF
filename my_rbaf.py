@@ -1,6 +1,7 @@
 import base64
 import sys
 
+from PyQt5 import QtCore
 from PyQt5.QtGui import QDoubleValidator, QIcon, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QApplication, QHeaderView, QAbstractItemView, QTableWidgetItem, QMessageBox
 import calc_util
@@ -18,6 +19,7 @@ class MyMainWindow(QMainWindow, Ui_RbafWin):
         self.tableWidgetOutput.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.tableWidgetOutput.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tableWidgetOutput.horizontalHeader().setVisible(False)
+        self.pushButtonCalc.setShortcut(QtCore.Qt.Key_Return)
         self.pushButtonCalc.clicked.connect(self.btn_clicked)
         self.tableWidgetOutput.setShowGrid(False)
         self.tableWidgetOutput.setVisible(False)
